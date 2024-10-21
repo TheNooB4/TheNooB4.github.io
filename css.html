@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Course - CodeLearn Hub</title>
+    <style>
+        :root {
+            --primary-color: #0070c9;
+            --secondary-color: #00a0d2;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --code-bg: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-description {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .table-of-contents {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .table-of-contents ul {
+            list-style-type: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+
+        .table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .code-snippet {
+            background-color: var(--code-bg);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .exercise {
+            background-color: #e6f3ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exercise h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Course</h1>
+        <p class="course-description">Master the art of styling web pages with Cascading Style Sheets (CSS), from beginner to advanced level.</p>
+    </header>
+
+    <div class="container">
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction to CSS</a></li>
+                <li><a href="#selectors">2. CSS Selectors</a></li>
+                <li><a href="#properties">3. CSS Properties</a></li>
+                <li><a href="#layout">4. CSS Layout</a></li>
+                <li><a href="#responsive-design">5. Responsive Web Design</a></li>
+                <li><a href="#typography">6. CSS Typography</a></li>
+                <li><a href="#box-model">7. The CSS Box Model</a></li>
+                <li><a href="#color-and-backgrounds">8. Color and Backgrounds</a></li>
+                <li><a href="#pseudo-classes-and-elements">9. Pseudo-classes and Pseudo-elements</a></li>
+                <li><a href="#advanced-topics">10. Advanced CSS Topics</a></li>
+            </ul>
+        </div>
+
+        <div id="introduction" class="section">
+            <h2>1. Introduction to CSS</h2>
+            <p>CSS (Cascading Style Sheets) is a style sheet language used to describe the presentation of a document written in a markup language, such as HTML. It allows you to control the layout, color, font, and other visual aspects of web pages.</p>
+            <div class="code-snippet">
+                <pre><code>body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #0070c9;
+    font-size: 2.5em;
+}
+
+p {
+    line-height: 1.6;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This CSS code sets the font, color, and background-color for the `body` element, and styles the `h1` and `p` elements.</p>
+        </div>
+
+        <div id="selectors" class="section">
+            <h2>2. CSS Selectors</h2>
+            <p>CSS selectors are used to target specific HTML elements to apply styles. CSS supports various types of selectors, including:</p>
+            <ul>
+                <li>Element selectors (e.g., `h1`, `p`, `div`)</li>
+                <li>Class selectors (e.g., `.my-class`)</li>
+                <li>ID selectors (e.g., `#my-id`)</li>
+                <li>Attribute selectors (e.g., `[type="text"]`)</li>
+                <li>Combinators (e.g., `div p`, `div > p`, `div + p`, `div ~ p`)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>/* Element selector */
+h1 {
+    font-size: 2em;
+}
+
+/* Class selector */
+.my-class {
+    color: #0070c9;
+}
+
+/* ID selector */
+#my-id {
+    font-weight: bold;
+}
+
+/* Attribute selector */
+[type="text"] {
+    border: 1px solid #ccc;
+}
+
+/* Combinator */
+div p {
+    margin-bottom: 10px;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate how to use different types of CSS selectors to target and style HTML elements.</p>
+        </div>
+
+        <div id="properties" class="section">
+            <h2>3. CSS Properties</h2>
+            <p>CSS properties are used to define the visual appearance of HTML elements. Some common CSS properties include:</p>
+            <ul>
+                <li>Font properties (e.g., `font-family`, `font-size`, `font-weight`)</li>
+                <li>Color properties (e.g., `color`, `background-color`)</li>
+                <li>Box model properties (e.g., `width`, `height`, `margin`, `padding`, `border`)</li>
+                <li>Layout properties (e.g., `display`, `position`, `float`, `flex`)</li>
+                <li>Text properties (e.g., `text-align`, `text-decoration`, `line-height`)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #0070c9;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.my-box {
+    width: 300px;
+    height: 200px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate how to use various CSS properties to style the appearance of HTML elements.</p>
+        </div>
+
+        <div id="layout" class="section">
+            <h2>4. CSS Layout</h2>
+            <p>CSS provides several ways to control the layout of web pages, including:</p>
+            <ul>
+                <li>The `display` property (e.g., `block`, `inline`, `flex`, `grid`)</li>
+                <li>The `position` property (e.g., `static`, `relative`, `absolute`, `fixed`)</li>
+                <li>The `float` and `clear` properties</li>
+                <li>Flexbox and Grid layouts</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>/* Flexbox layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item {
+    flex: 1;
+    margin: 10px;
+}
+
+/* Grid layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.grid-item {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of Flexbox and Grid layouts to control the positioning and alignment of HTML elements.</p>
+        </div>
+
+        <div id="responsive-design" class="section">
+            <h2>5. Responsive Web Design</h2>
+            <p>Responsive web design is the practice of creating web pages that adapt to different screen sizes and devices. CSS provides several tools to achieve responsive design, such as:</p>
+            <ul>
+                <li>Media queries</li>
+                <li>Flexible layouts (e.g., Flexbox, Grid)</li>
+                <li>Responsive typography (e.g., `vw`, `vh` units)</li>
+                <li>Responsive images and media</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>/* Media query for small screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .item {
+        flex-basis: auto;
+    }
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This example demonstrates the use of a media query to apply different styles for small screen sizes, such as adjusting the font size of the `h1` element and changing the layout of the `.container` element.</p>
+        </div>
+
+        <div id="typography" class="section">
+            <h2>6. CSS Typography</h2>
+            <p>CSS provides a wide range of properties to control the appearance of text, including:</p>
+            <ul>
+                <li>Font properties (e.g., `font-family`, `font-size`, `font-weight`)</li>
+                <li>Text properties (e.g., `color`, `text-align`, `text-decoration`, `line-height`)</li>
+                <li>Web fonts (e.g., `@font-face`)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    color: #0070c9;
+    line-height: 1.2;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    color: #333;
+    line-height: 1.6;
+    text-align: justify;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This example demonstrates how to use various CSS properties to control the typography of the `h1` and `p` elements, including font family, size, weight, color, and line height.</p>
+        </div>
+
+        
+        <div id="box-model" class="section">
+            <h2>7. The CSS Box Model</h2>
+            <p>The CSS box model describes the rectangular box that surrounds every HTML element. It consists of the following components:</p>
+            <ul>
+                <li>Content: The actual content of the element (e.g., text, images)</li>
+                <li>Padding: The space between the content and the border</li>
+                <li>Border: The line surrounding the padding and content</li>
+                <li>Margin: The space between the border and the surrounding elements</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>.box {
+    width: 300px;
+    height: 200px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    margin: 30px;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This example demonstrates how the box model properties (width, height, padding, border, and margin) affect the size and spacing of an HTML element.</p>
+        </div>
+
+        <div id="color-and-backgrounds" class="section">
+            <h2>8. Color and Backgrounds</h2>
+            <p>CSS provides various ways to set the color and background of HTML elements, including:</p>
+            <ul>
+                <li>Color properties (e.g., `color`, `background-color`)</li>
+                <li>Gradient backgrounds (e.g., `linear-gradient`, `radial-gradient`)</li>
+                <li>Background images (e.g., `background-image`, `background-size`, `background-repeat`)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>body {
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #0070c9;
+    background-color: #e6f3ff;
+    padding: 20px;
+}
+
+.gradient-bg {
+    background: linear-gradient(to right, #0070c9, #00a0d2);
+    color: white;
+    padding: 50px;
+}
+
+.image-bg {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate how to use CSS to set the color and background of HTML elements, including the use of gradients and background images.</p>
+        </div>
+
+        <div id="pseudo-classes-and-elements" class="section">
+            <h2>9. Pseudo-classes and Pseudo-elements</h2>
+            <p>CSS pseudo-classes and pseudo-elements allow you to target specific states or parts of an HTML element:</p>
+            <ul>
+                <li>Pseudo-classes (e.g., `:hover`, `:active`, `:focus`, `:nth-child()`)</li>
+                <li>Pseudo-elements (e.g., `::before`, `::after`, `::first-line`, `::selection`)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>a:link {
+    color: #0070c9;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #00a0d2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button::before {
+    content: "✨ ";
+}
+
+p::first-line {
+    font-weight: bold;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of pseudo-classes to style links in different states, and pseudo-elements to add content before a button and style the first line of a paragraph.</p>
+        </div>
+
+        <div id="advanced-topics" class="section">
+            <h2>10. Advanced CSS Topics</h2>
+            <p>CSS has many advanced features and techniques that you can explore further, including:</p>
+            <ul>
+                <li>CSS Animations and Transitions</li>
+                <li>CSS Transforms</li>
+                <li>CSS Variables (Custom Properties)</li>
+                <li>CSS Frameworks (e.g., Bootstrap, Tailwind CSS)</li>
+                <li>CSS Preprocessors (e.g., Sass, Less)</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>/* CSS Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #0070c9;
+    --secondary-color: #00a0d2;
+    --text-color: #333;
+}
+
+h1 {
+    color: var(--primary-color);
+}
+
+p {
+    color: var(--text-color);
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of CSS animations and CSS variables, which are powerful tools for creating dynamic and customizable web designs.</p>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a responsive layout using Flexbox or Grid, and add some CSS animations to the elements.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

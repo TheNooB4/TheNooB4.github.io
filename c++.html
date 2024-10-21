@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Course - CodeLearn Hub</title>
+    <style>
+        :root {
+            --primary-color: #00599C;
+            --secondary-color: #f6a100;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --code-bg: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-description {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .table-of-contents {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .table-of-contents ul {
+            list-style-type: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+
+        .table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .code-snippet {
+            background-color: var(--code-bg);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .exercise {
+            background-color: #e6f3ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exercise h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>C++ Course</h1>
+        <p class="course-description">Learn C++ programming from beginner to advanced level with hands-on examples and exercises.</p>
+    </header>
+
+    <div class="container">
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction to C++</a></li>
+                <li><a href="#basics">2. C++ Basics</a></li>
+                <li><a href="#control-flow">3. Control Flow</a></li>
+                <li><a href="#functions">4. Functions</a></li>
+                <li><a href="#data-structures">5. Data Structures</a></li>
+                <li><a href="#oop">6. Object-Oriented Programming</a></li>
+                <li><a href="#memory-management">7. Memory Management</a></li>
+                <li><a href="#file-handling">8. File Handling</a></li>
+                <li><a href="#exceptions">9. Exception Handling</a></li>
+                <li><a href="#advanced-topics">10. Advanced Topics</a></li>
+            </ul>
+        </div>
+
+        <div id="introduction" class="section">
+            <h2>1. Introduction to C++</h2>
+            <p>C++ is a general-purpose, object-oriented programming language developed by Bjarne Stroustrup in 1979. It is an extension of the C programming language and is widely used for a variety of applications, including system programming, game development, and high-performance computing.</p>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This simple "Hello, World!" program demonstrates the basic structure of a C++ program, including the use of the `iostream` library and the `main` function.</p>
+        </div>
+
+        <div id="basics" class="section">
+            <h2>2. C++ Basics</h2>
+            <p>Let's explore the fundamental concepts of C++ programming.</p>
+
+            <h3>Variables and Data Types</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    int age = 25;
+    double pi = 3.14159;
+    std::string name = "Alice";
+    bool is_student = true;
+
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "Pi: " << pi << std::endl;
+    std::cout << "Name: " << name << std::endl;
+    std::cout << "Is student? " << is_student << std::endl;
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Operators</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    int a = 10, b = 3;
+
+    std::cout << "Addition: " << a + b << std::endl;
+    std::cout << "Subtraction: " << a - b << std::endl;
+    std::cout << "Multiplication: " << a * b << std::endl;
+    std::cout << "Division: " << a / b << std::endl;
+    std::cout << "Modulus: " << a % b << std::endl;
+    std::cout << "Exponentiation: " << a ^ b << std::endl;
+
+    std::cout << "Equal: " << (a == b) << std::endl;
+    std::cout << "Not Equal: " << (a != b) << std::endl;
+    std::cout << "Greater Than: " << (a > b) << std::endl;
+    std::cout << "Less Than: " << (a < b) << std::endl;
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Write a C++ program that calculates the area and perimeter of a rectangle, given the length and width.</p>
+            </div>
+        </div>
+
+        <div id="control-flow" class="section">
+            <h2>3. Control Flow</h2>
+            <p>Control flow statements in C++ allow you to control the execution of your code based on certain conditions.</p>
+
+            <h3>If-Else Statements</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    int age = 18;
+
+    if (age < 18) {
+        std::cout << "You are a minor" << std::endl;
+    } else if (age == 18) {
+        std::cout << "You just became an adult" << std::endl;
+    } else {
+        std::cout << "You are an adult" << std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>For Loops</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    std::string fruits[] = {"apple", "banana", "cherry"};
+
+    for (std::string fruit : fruits) {
+        std::cout << "I like " << fruit << std::endl;
+    }
+
+    for (int i = 0; i < 5; i++) {
+        std::cout << i << std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>While Loops</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    int count = 0;
+
+    while (count < 5) {
+        std::cout << "Count is " << count << std::endl;
+        count++;
+    }
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Write a C++ program that prints the first 10 even numbers using a for loop.</p>
+            </div>
+        </div>
+
+        <div id="functions" class="section">
+            <h2>4. Functions</h2>
+            <p>Functions in C++ are reusable blocks of code that perform specific tasks.</p>
+
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int add(int a, int b) {
+    return a + b;
+}
+
+int subtract(int a, int b) {
+    return a - b;
+}
+
+int main() {
+    int result = add(5, 3);
+    std::cout << result << std::endl; // 8
+
+    result = subtract(10, 4);
+    std::cout << result << std::endl; // 6
+
+    auto square = [](int x) { return x * x; };
+    std::cout << square(4) << std::endl; // 16
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>In this example, we define two functions, `add` and `subtract`, that perform the respective operations. We also demonstrate the use of a lambda function to create a `square` function.</p>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a function that takes a vector of numbers and returns the sum of all even numbers in the vector.</p>
+            </div>
+        </div>
+
+        <div id="data-structures" class="section">
+            <h2>5. Data Structures</h2>
+            <p>C++ provides several built-in data structures that are commonly used.</p>
+
+            <h3>Arrays</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+#include <vector>
+
+int main() {
+    // Arrays
+    int numbers[] = {1, 2, 3, 4, 5};
+    std::cout << numbers[0] << std::endl; // 1
+
+    // Vectors
+    std::vector<int> fruits = {1, 2, 3, 4, 5};
+    fruits.push_back(6);
+    fruits.erase(fruits.begin() + 2);
+    for (int fruit : fruits) {
+        std::cout << fruit << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Strings</h3>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+#include <string>
+
+int main() {
+    std::string name = "Alice";
+    std::cout << name << std::endl; // Alice
+
+    name += " Smith";
+    std::cout << name << std::endl; // Alice Smith
+
+    std::cout << name.length() << std::endl; // 11
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a program that stores a list of student names and their grades in a vector of pairs. Then, calculate and print the average grade for each student.</p>
+            </div>
+        </div>
+
+        
+        <div id="oop" class="section">
+            <h2>6. Object-Oriented Programming</h2>
+            <p>C++ supports the object-oriented programming (OOP) paradigm, which allows you to create and work with classes and objects.</p>
+
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+class Dog {
+public:
+    Dog(std::string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+
+    std::string bark() {
+        return this->name + " says Woof!";
+    }
+
+private:
+    std::string name;
+    int age;
+};
+
+int main() {
+    Dog myDog("Buddy", 5);
+    std::cout << myDog.bark() << std::endl; // Buddy says Woof!
+
+    class GuideDog : public Dog {
+    public:
+        GuideDog(std::string name, int age, bool isGuide)
+            : Dog(name, age), isGuide(isGuide) {}
+
+        std::string guide() {
+            return this->name + " is guiding its owner.";
+        }
+
+    private:
+        bool isGuide;
+    };
+
+    GuideDog guideDog("Bella", 7, true);
+    std::cout << guideDog.bark() << std::endl; // Bella says Woof!
+    std::cout << guideDog.guide() << std::endl; // Bella is guiding its owner.
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>In this example, we define a `Dog` class with a constructor that initializes the `name` and `age` attributes, and a `bark` method that returns the dog's bark. We then create an instance of the `Dog` class and call the `bark` method.</p>
+
+            <p>We also demonstrate inheritance by creating a `GuideDog` class that inherits from the `Dog` class and adds an `isGuide` attribute and a `guide` method.</p>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a `Car` class with attributes for make, model, and year. Add a `drive` method that prints a message indicating the car is being driven. Then, create an `ElectricCar` class that inherits from the `Car` class and adds a `charge` method.</p>
+            </div>
+        </div>
+
+        <div id="memory-management" class="section">
+            <h2>7. Memory Management</h2>
+            <p>C++ provides manual memory management through pointers and dynamic memory allocation.</p>
+
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    // Pointers
+    int x = 10;
+    int* p = &x;
+    std::cout << *p << std::endl; // 10
+
+    // Dynamic Memory Allocation
+    int* arr = new int[5];
+    arr[0] = 1;
+    arr[1] = 2;
+    // ...
+    delete[] arr;
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>In this example, we demonstrate the use of pointers to access the value of a variable, as well as dynamic memory allocation and deallocation using `new` and `delete`.</p>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Write a program that dynamically allocates a 2D array of integers, initializes it with values, and then frees the memory allocated for the array.</p>
+            </div>
+        </div>
+
+        
+        <div id="file-handling" class="section">
+            <h2>8. File Handling</h2>
+            <p>C++ provides file handling capabilities through the `fstream` library.</p>
+
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+#include <fstream>
+
+int main() {
+    // Writing to a file
+    std::ofstream file("example.txt");
+    file << "Hello, World!" << std::endl;
+    file.close();
+
+    // Reading from a file
+    std::ifstream inFile("example.txt");
+    std::string line;
+    while (std::getline(inFile, line)) {
+        std::cout << line << std::endl;
+    }
+    inFile.close();
+
+    // Appending to a file
+    std::ofstream appendFile("example.txt", std::ios::app);
+    appendFile << "This is a new line." << std::endl;
+    appendFile.close();
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>In this example, we use the `ofstream` class to write to a file, the `ifstream` class to read from a file, and the `ios::app` mode to append data to a file.</p>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Write a program that reads a file containing a list of numbers, calculates the sum and average of the numbers, and writes the results to a new file.</p>
+            </div>
+        </div>
+
+        <div id="exceptions" class="section">
+            <h2>9. Exception Handling</h2>
+            <p>C++ provides a way to handle unexpected situations or errors that may occur during program execution.</p>
+
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+int main() {
+    try {
+        int result = 10 / 0;
+        std::cout << "Result: " << result << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "Unknown error occurred" << std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <p>In this example, we attempt to divide 10 by 0, which will raise a `std::exception`. We catch the exception using the `try-catch` block and print an error message. The `catch (...)` block is used to handle any other types of exceptions that may occur.</p>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Write a program that prompts the user to enter a number. If the user enters a non-numeric value, catch the `std::invalid_argument` exception and print an error message.</p>
+            </div>
+        </div>
+
+        <div id="advanced-topics" class="section">
+            <h2>10. Advanced Topics</h2>
+            <p>C++ has many advanced features and concepts that you can explore further.</p>
+
+            <h3>Templates</h3>
+            <p>Templates allow you to write generic code that can work with different data types.</p>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+
+template &lt;typename T&gt;
+T add(T a, T b) {
+    return a + b;
+}
+
+int main() {
+    std::cout << add&lt;int&gt;(5, 3) << std::endl; // 8
+    std::cout << add&lt;double&gt;(3.14, 2.71) << std::endl; // 5.85
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Lambdas</h3>
+            <p>Lambdas are anonymous functions that can be used as function arguments or stored in variables.</p>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+#include <algorithm>
+#include <vector>
+
+int main() {
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5};
+
+    // Using a lambda function
+    std::for_each(numbers.begin(), numbers.end(), [](int num) {
+        std::cout << num << " ";
+    });
+    std::cout << std::endl;
+
+    // Storing a lambda in a variable
+    auto square = [](int x) { return x * x; };
+    std::cout << square(4) << std::endl; // 16
+
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <h3>Smart Pointers</h3>
+            <p>Smart pointers in C++ provide automatic memory management, reducing the risk of memory leaks.</p>
+            <div class="code-snippet">
+                <pre><code>#include <iostream>
+#include <memory>
+
+class MyClass {
+public:
+    MyClass() { std::cout << "MyClass created" << std::endl; }
+    ~MyClass() { std::cout << "MyClass destroyed" << std::endl; }
+};
+
+int main() {
+    std::unique_ptr&lt;MyClass&gt; ptr1(new MyClass());
+    std::shared_ptr&lt;MyClass&gt; ptr2(new MyClass());
+
+    // ptr1 and ptr2 will be automatically destroyed when they go out of scope
+    return 0;
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a function that takes a vector of integers and a lambda function as arguments. The function should apply the lambda function to each element in the vector and return a new vector with the modified values.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Course - CodeLearn Hub</title>
+    <style>
+        :root {
+            --primary-color: #e34c26;
+            --secondary-color: #f16529;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --code-bg: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-description {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .table-of-contents {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .table-of-contents ul {
+            list-style-type: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+
+        .table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .code-snippet {
+            background-color: var(--code-bg);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .exercise {
+            background-color: #e6f3ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exercise h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML Course</h1>
+        <p class="course-description">Master the fundamentals of HTML, the backbone of web development, with hands-on examples and exercises.</p>
+    </header>
+
+    <div class="container">
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction to HTML</a></li>
+                <li><a href="#basic-structure">2. Basic HTML Structure</a></li>
+                <li><a href="#headings-and-paragraphs">3. Headings and Paragraphs</a></li>
+                <li><a href="#links-and-images">4. Links and Images</a></li>
+                <li><a href="#lists">5. Lists</a></li>
+                <li><a href="#tables">6. Tables</a></li>
+                <li><a href="#forms">7. Forms</a></li>
+                <li><a href="#semantic-elements">8. Semantic Elements</a></li>
+                <li><a href="#html5-features">9. HTML5 Features</a></li>
+                <li><a href="#best-practices">10. Best Practices</a></li>
+            </ul>
+        </div>
+
+        <div id="introduction" class="section">
+            <h2>1. Introduction to HTML</h2>
+            <p>HTML (Hypertext Markup Language) is the standard markup language used to create and structure web pages. It provides the basic building blocks for creating the content and layout of a website.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to my website!&lt;/h1&gt;
+    &lt;p&gt;This is a simple HTML page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This basic HTML structure includes the `&lt;html&gt;`, `&lt;head&gt;`, and `&lt;body&gt;` elements, demonstrating the core components of an HTML document.</p>
+        </div>
+
+        <div id="basic-structure" class="section">
+            <h2>2. Basic HTML Structure</h2>
+            <p>Every HTML document has a specific structure that includes the following elements:</p>
+            <ul>
+                <li>`&lt;!DOCTYPE html&gt;`: Declares the document type as HTML5.</li>
+                <li>`&lt;html&gt;`: Encloses the entire HTML document.</li>
+                <li>`&lt;head&gt;`: Contains metadata and other non-visible information about the page.</li>
+                <li>`&lt;body&gt;`: Holds the visible content of the web page.</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Web Page&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Page content goes here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This code demonstrates the basic structure of an HTML document, including the `&lt;head&gt;` and `&lt;body&gt;` sections.</p>
+        </div>
+
+        <div id="headings-and-paragraphs" class="section">
+            <h2>3. Headings and Paragraphs</h2>
+            <p>HTML provides six levels of headings, from `&lt;h1&gt;` (the largest) to `&lt;h6&gt;` (the smallest), which are used to structure the content of a web page.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;h1&gt;This is a top-level heading&lt;/h1&gt;
+&lt;h2&gt;This is a second-level heading&lt;/h2&gt;
+&lt;h3&gt;This is a third-level heading&lt;/h3&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+&lt;p&gt;This is another paragraph of text.&lt;/p&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>Paragraphs are defined using the `&lt;p&gt;` element, and they are used to group related content together.</p>
+        </div>
+
+        <div id="links-and-images" class="section">
+            <h2>4. Links and Images</h2>
+            <p>HTML allows you to create hyperlinks using the `&lt;a&gt;` element, and to embed images using the `&lt;img&gt;` element.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;a href="https://www.example.com"&gt;Click me to visit Example.com&lt;/a&gt;
+
+&lt;img src="example-image.jpg" alt="Example Image"&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>The `href` attribute in the `&lt;a&gt;` element specifies the URL of the link, and the `src` attribute in the `&lt;img&gt;` element specifies the path to the image file. The `alt` attribute provides alternative text for the image, which is displayed if the image cannot be loaded.</p>
+        </div>
+
+        <div id="lists" class="section">
+            <h2>5. Lists</h2>
+            <p>HTML supports two types of lists: ordered lists (`&lt;ol&gt;`) and unordered lists (`&lt;ul&gt;`).</p>
+            <div class="code-snippet">
+                <pre><code>&lt;h3&gt;Ordered List&lt;/h3&gt;
+&lt;ol&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+    &lt;li&gt;Third item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Unordered List&lt;/h3&gt;
+&lt;ul&gt;
+    &lt;li&gt;Apple&lt;/li&gt;
+    &lt;li&gt;Banana&lt;/li&gt;
+    &lt;li&gt;Cherry&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>The `&lt;li&gt;` element is used to define each item in the list.</p>
+        </div>
+
+        <div id="tables" class="section">
+            <h2>6. Tables</h2>
+            <p>HTML provides the `&lt;table&gt;`, `&lt;tr&gt;`, `&lt;th&gt;`, and `&lt;td&gt;` elements to create tables.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+        &lt;th&gt;City&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Alice&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+        &lt;td&gt;New York&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Bob&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+        &lt;td&gt;London&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>The `&lt;th&gt;` element is used for table headers, and the `&lt;td&gt;` element is used for regular table cells.</p>
+        </div>
+
+        
+        <div id="forms" class="section">
+            <h2>7. Forms</h2>
+            <p>HTML provides the `&lt;form&gt;` element to create interactive user input forms.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;form&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
+    &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This form includes input fields for name, email, and a message, as well as a submit button. The `&lt;label&gt;` element is used to provide a label for each input field, and the `type` attribute of the `&lt;input&gt;` element specifies the type of input (e.g., text, email).</p>
+        </div>
+
+        <div id="semantic-elements" class="section">
+            <h2>8. Semantic Elements</h2>
+            <p>HTML5 introduced a set of semantic elements that provide more meaning to the content of a web page.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;header&gt;
+    &lt;h1&gt;My Website&lt;/h1&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;section&gt;
+        &lt;h2&gt;Welcome to my website&lt;/h2&gt;
+        &lt;p&gt;This is the main content of the page.&lt;/p&gt;
+    &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;Copyright &amp;copy; 2023&lt;/p&gt;
+&lt;/footer&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>In this example, we use semantic elements like `&lt;header&gt;`, `&lt;nav&gt;`, `&lt;main&gt;`, `&lt;section&gt;`, and `&lt;footer&gt;` to provide a more meaningful structure to the web page.</p>
+        </div>
+
+        <div id="html5-features" class="section">
+            <h2>9. HTML5 Features</h2>
+            <p>HTML5 introduced several new features and elements that enhance the functionality and accessibility of web pages.</p>
+            <div class="code-snippet">
+                <pre><code>&lt;video src="example-video.mp4" controls&gt;
+    Your browser does not support the video tag.
+&lt;/video&gt;
+
+&lt;audio src="example-audio.mp3" controls&gt;
+    Your browser does not support the audio tag.
+&lt;/audio&gt;
+
+&lt;canvas id="myCanvas"&gt;
+    Your browser does not support the canvas tag.
+&lt;/canvas&gt;
+
+&lt;input type="date" id="date-input"&gt;
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>In this example, we demonstrate the use of the `&lt;video&gt;`, `&lt;audio&gt;`, `&lt;canvas&gt;`, and HTML5 input types like `date`.</p>
+        </div>
+
+        <div id="best-practices" class="section">
+            <h2>10. Best Practices</h2>
+            <p>Here are some best practices to keep in mind when writing HTML:</p>
+            <ul>
+                <li>Use semantic elements to provide meaning to the content.</li>
+                <li>Maintain proper nesting and indentation of HTML elements.</li>
+                <li>Use meaningful and descriptive names for elements and attributes.</li>
+                <li>Provide alternative text (alt) for images and other media.</li>
+                <li>Validate your HTML code to ensure it's well-formed and follows standards.</li>
+                <li>Keep your HTML code clean and organized for better maintainability.</li>
+            </ul>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a simple web page with a header, main content section, and a footer. Include a list of your favorite books or movies, and a form for users to submit their own recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
