@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Course - CodeLearn Hub</title>
+    <style>
+        :root {
+            --primary-color: #e76f00;
+            --secondary-color: #ffa500;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --code-bg: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-description {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .table-of-contents {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .table-of-contents ul {
+            list-style-type: none;
+        }
+
+        .table-of-contents li {
+            margin-bottom: 10px;
+        }
+
+        .table-of-contents a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+        }
+
+        .code-snippet {
+            background-color: var(--code-bg);
+            border-radius: 4px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .code-snippet pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 0.8em;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        .exercise {
+            background-color: #e6f3ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exercise h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 0;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Java Course</h1>
+        <p class="course-description">Learn the Java programming language from the basics to advanced concepts, with hands-on examples and projects.</p>
+    </header>
+
+    <div class="container">
+        <div class="table-of-contents">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction to Java</a></li>
+                <li><a href="#variables-and-data-types">2. Variables and Data Types</a></li>
+                <li><a href="#operators-and-expressions">3. Operators and Expressions</a></li>
+                <li><a href="#control-flow">4. Control Flow Statements</a></li>
+                <li><a href="#methods">5. Methods</a></li>
+                <li><a href="#arrays-and-collections">6. Arrays and Collections</a></li>
+                <li><a href="#object-oriented-programming">7. Object-Oriented Programming</a></li>
+                <li><a href="#exception-handling">8. Exception Handling</a></li>
+                <li><a href="#file-io">9. File I/O</a></li>
+                <li><a href="#advanced-topics">10. Advanced Java Topics</a></li>
+            </ul>
+        </div>
+
+        <div id="introduction" class="section">
+            <h2>1. Introduction to Java</h2>
+            <p>Java is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle). It is widely used for a variety of applications, including web development, mobile development, enterprise software, and more.</p>
+            <div class="code-snippet">
+                <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This simple "Hello, World!" program demonstrates the basic structure of a Java program, including the `public` access modifier, the `class` keyword, and the `main` method.</p>
+        </div>
+
+        <div id="variables-and-data-types" class="section">
+            <h2>2. Variables and Data Types</h2>
+            <p>Java provides a variety of data types, including primitive types (e.g., `int`, `double`, `boolean`) and reference types (e.g., `String`, `Array`, `Class`).</p>
+            <div class="code-snippet">
+                <pre><code>int age = 25;
+double pi = 3.14159;
+boolean isStudent = true;
+String name = "Alice";
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>In this example, we declare variables of different data types and assign values to them.</p>
+        </div>
+
+        <div id="operators-and-expressions" class="section">
+            <h2>3. Operators and Expressions</h2>
+            <p>Java provides a wide range of operators, including arithmetic, assignment, comparison, and logical operators, which can be used to create expressions.</p>
+            <div class="code-snippet">
+                <pre><code>int a = 10, b = 3;
+System.out.println("Addition: " + (a + b));
+System.out.println("Subtraction: " + (a - b));
+System.out.println("Multiplication: " + (a * b));
+System.out.println("Division: " + (a / b));
+System.out.println("Modulus: " + (a % b));
+System.out.println("Equal: " + (a == b));
+System.out.println("Not Equal: " + (a != b));
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This code demonstrates the use of various operators to perform arithmetic and comparison operations.</p>
+        </div>
+
+        <div id="control-flow" class="section">
+            <h2>4. Control Flow Statements</h2>
+            <p>Java provides several control flow statements, such as `if-else`, `switch`, `for`, `while`, and `do-while`, to control the execution of your code.</p>
+            <div class="code-snippet">
+                <pre><code>int age = 18;
+if (age < 18) {
+    System.out.println("You are a minor");
+} else if (age == 18) {
+    System.out.println("You just became an adult");
+} else {
+    System.out.println("You are an adult");
+}
+
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of `if-else` statements and `for` loops in Java.</p>
+        </div>
+
+        <div id="methods" class="section">
+            <h2>5. Methods</h2>
+            <p>Methods in Java are reusable blocks of code that perform specific tasks. They can take parameters and return values.</p>
+            <div class="code-snippet">
+                <pre><code>public int add(int a, int b) {
+    return a + b;
+}
+
+public static void main(String[] args) {
+    int result = add(5, 3);
+    System.out.println(result); // Output: 8
+
+    MyClass obj = new MyClass();
+    result = obj.add(10, 4);
+    System.out.println(result); // Output: 14
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>In this example, we define an `add` method that takes two integers as parameters and returns their sum. We then call this method from the `main` method to demonstrate its usage.</p>
+        </div>
+
+        <div id="arrays-and-collections" class="section">
+            <h2>6. Arrays and Collections</h2>
+            <p>Java provides built-in data structures, such as arrays and collections (e.g., `ArrayList`, `HashMap`), to store and manipulate data.</p>
+            <div class="code-snippet">
+                <pre><code>// Arrays
+int[] numbers = {1, 2, 3, 4, 5};
+System.out.println(numbers[0]); // Output: 1
+
+// ArrayList
+ArrayList&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+fruits.add("apple");
+fruits.add("banana");
+fruits.remove(0);
+System.out.println(fruits.get(0)); // Output: banana
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of arrays and the `ArrayList` collection in Java.</p>
+        </div>
+
+        <div id="object-oriented-programming" class="section">
+            <h2>7. Object-Oriented Programming</h2>
+            <p>Java is an object-oriented programming language, which means it supports the creation of classes and objects.</p>
+            <div class="code-snippet">
+                <pre><code>public class Dog {
+    private String name;
+    private int age;
+
+    public Dog(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String bark() {
+        return this.name + " says Woof!";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog myDog = new Dog("Buddy", 5);
+        System.out.println(myDog.bark()); // Output: Buddy says Woof!
+    }
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>In this example, we define a `Dog` class with a constructor, private member variables, and a `bark` method. We then create an instance of the `Dog` class and call the `bark` method.</p>
+        </div>
+
+        <div id="exception-handling" class="section">
+            <h2>8. Exception Handling</h2>
+            <p>Java provides a structured way to handle unexpected situations or errors that may occur during program execution using exception handling.</p>
+            <div class="code-snippet">
+                <pre><code>public static void main(String[] args) {
+    try {
+        int result = 10 / 0;
+        System.out.println("Result: " + result);
+    } catch (ArithmeticException e) {
+        System.out.println("Error: " + e.getMessage());
+    } catch (Exception e) {
+        System.out.println("Unknown error occurred");
+    }
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This example demonstrates the use of a `try-catch` block to handle an `ArithmeticException` that occurs when attempting to divide by zero.</p>
+        </div>
+
+        <div id="file-io" class="section">
+            <h2>9. File I/O</h2>
+            <p>Java provides classes and methods for reading from and writing to files, allowing you to interact with the file system.</p>
+            <div class="code-snippet">
+                <pre><code>try {
+    FileWriter writer = new FileWriter("example.txt");
+    writer.write("Hello, World!");
+    writer.close();
+
+    FileReader reader = new FileReader("example.txt");
+    BufferedReader bufferedReader = new BufferedReader(reader);
+    String line;
+    while ((line = bufferedReader.readLine()) != null) {
+        System.out.println(line);
+    }
+    reader.close();
+} catch (IOException e) {
+    System.out.println("An error occurred: " + e.getMessage());
+}
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>This example demonstrates how to write to a file and then read from the same file using Java's file I/O capabilities.</p>
+        </div>
+
+        
+        <div id="advanced-topics" class="section">
+            <h2>10. Advanced Java Topics</h2>
+            <p>Java has many advanced features and concepts that you can explore further, including:</p>
+            <ul>
+                <li>Generics</li>
+                <li>Lambdas and Functional Programming</li>
+                <li>Streams and Parallel Processing</li>
+                <li>Concurrency and Multithreading</li>
+                <li>Java Enterprise Edition (Java EE)</li>
+                <li>Spring Framework</li>
+                <li>Android Development</li>
+            </ul>
+            <div class="code-snippet">
+                <pre><code>// Generics
+public class Box&lt;T&gt; {
+    private T item;
+
+    public void set(T item) {
+        this.item = item;
+    }
+
+    public T get() {
+        return this.item;
+    }
+}
+
+// Lambdas
+Runnable r = () -&gt; {
+    System.out.println("Hello from a lambda!");
+};
+r.run();
+
+// Streams
+List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5);
+int sum = numbers.stream()
+                  .filter(n -&gt; n % 2 == 0)
+                  .mapToInt(Integer::intValue)
+                  .sum();
+System.out.println(sum); // Output: 6
+</code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
+            <p>These examples demonstrate the use of generics, lambdas, and streams in Java, which are powerful features for writing concise and expressive code.</p>
+            <div class="exercise">
+                <h3>Exercise:</h3>
+                <p>Create a program that reads a list of numbers from a file, filters out the odd numbers, and calculates the sum of the even numbers using Java Streams.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const code = btn.previousElementSibling.innerText;
+                navigator.clipboard.writeText(code);
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
