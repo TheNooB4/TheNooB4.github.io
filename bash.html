@@ -1,4 +1,4 @@
-
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +7,28 @@
     <title>Bash Programming Course - CodeLearn Hub</title>
     <style>
         :root {
-            --primary-color: #4EAA6B;
-            --secondary-color: #333333;
-            --text-color: #333;
-            --bg-color: #f4f4f4;
+            --primary-color: #00ffff;
+            --secondary-color: #1a1a2e;
+            --text-color: #ffffff;
+            --bg-color: #0f3460;
+            --hover-color: #e94560;
+            --code-bg: #2a2a2a;
+        }
+
+        .dark-mode {
+            --primary-color: #00ffff;
+            --secondary-color: #1a1a2e;
+            --text-color: #ffffff;
+            --bg-color: #0f3460;
+            --hover-color: #e94560;
+        }
+
+        .light-mode {
+            --primary-color: #0066cc;
+            --secondary-color: #ffffff;
+            --text-color: #333333;
+            --bg-color: #f0f0f0;
+            --hover-color: #ff4500;
             --code-bg: #f0f0f0;
         }
 
@@ -18,13 +36,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            background: var(--bg-color);
             color: var(--text-color);
-            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+            line-height: 1.6;
         }
 
         .container {
@@ -34,34 +54,61 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-align: center;
-            padding: 40px 0;
-            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(to right, var(--secondary-color), var(--bg-color));
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color); }
+            to { text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); }
+        }
+
+        .hamburger, .mode-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            margin-left: 20px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .hamburger:hover, .mode-toggle:hover {
+            color: var(--primary-color);
         }
 
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 48px;
+            margin-bottom: 20px;
             animation: fadeInDown 1s ease-out;
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .course-description {
             font-size: 1.2em;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
             animation: fadeIn 1s ease-out 0.5s both;
         }
 
@@ -71,11 +118,17 @@
         }
 
         .table-of-contents {
-            background-color: white;
+            background-color: var(--secondary-color);
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .table-of-contents h2 {
@@ -102,23 +155,12 @@
         }
 
         .section {
-            background-color: white;
+            background-color: var(--secondary-color);
             border-radius: 8px;
             padding: 30px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .section h2 {
@@ -136,12 +178,14 @@
             padding: 15px;
             margin-bottom: 15px;
             position: relative;
+            overflow-x: auto;
         }
 
         .code-snippet pre {
             margin: 0;
             white-space: pre-wrap;
             word-wrap: break-word;
+            font-size: 14px;
         }
 
         .copy-btn {
@@ -149,7 +193,7 @@
             top: 5px;
             right: 5px;
             background-color: var(--primary-color);
-            color: white;
+            color: var(--secondary-color);
             border: none;
             border-radius: 4px;
             padding: 5px 10px;
@@ -159,12 +203,11 @@
         }
 
         .copy-btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--primary-color);
+            background-color: var(--hover-color);
         }
 
         .exercise {
-            background-color: #e6f3ff;
+            background-color: var(--secondary-color);
             border-left: 4px solid var(--primary-color);
             padding: 15px;
             margin-bottom: 15px;
@@ -173,6 +216,88 @@
         .exercise h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background: var(--secondary-color);
+            padding: 20px;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .side-menu.show {
+            left: 0;
+        }
+
+        .side-menu ul {
+            list-style-type: none;
+        }
+
+        .side-menu ul li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .side-menu ul li img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .side-menu ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .side-menu ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .close-menu:hover {
+            color: var(--primary-color);
+        }
+
+        .view-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 255, 255, 0.3);
+            color: var(--text-color);
+            border: none;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .view-toggle:hover {
+            background: rgba(0, 255, 255, 0.5);
         }
 
         @media (max-width: 768px) {
@@ -195,12 +320,16 @@
     </style>
 </head>
 <body>
-    <header>
+    <div class="container">
+        <header>
+            <div class="logo">CodeLearn Hub</div>
+            <button class="hamburger">☰</button>
+            <button class="mode-toggle">🌓</button>
+        </header>
+
         <h1>Bash Programming Course</h1>
         <p class="course-description">Master the art of shell scripting with Bash, the powerful and versatile command-line interface for Unix-based systems.</p>
-    </header>
 
-    <div class="container">
         <div class="table-of-contents">
             <h2>Table of Contents</h2>
             <ul>
@@ -221,8 +350,7 @@
             <p>Bash (Bourne-Again SHell) is a Unix shell and command language that is widely used for scripting and automating tasks on Unix-based systems, including Linux and macOS.</p>
             <div class="code-snippet">
                 <pre><code>#!/bin/bash
-echo "Hello, World!"
-</code></pre>
+echo "Hello, World!"</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
             <p>This simple "Hello, World!" Bash script demonstrates the basic structure of a Bash script, including the shebang line and the `echo` command.</p>
@@ -235,10 +363,15 @@ echo "Hello, World!"
                 <pre><code>name="Alice"
 age=25
 is_student=true
-</code></pre>
+fruits=("apple" "banana" "orange")
+
+echo "Name: $name"
+echo "Age: $age"
+echo "Is student? $is_student"
+echo "First fruit: ${fruits[0]}"</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>In this example, we declare variables of different types and assign values to them.</p>
+            <p>In this example, we declare variables of different types and assign values to them. Bash doesn't require explicit type declarations, but it's important to understand how different types behave.</p>
         </div>
 
         <div id="commands-and-arguments" class="section">
@@ -247,10 +380,10 @@ is_student=true
             <div class="code-snippet">
                 <pre><code>echo "The current directory is $(pwd)"
 ls -l *.txt
-</code></pre>
+grep "error" log.txt</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>These examples demonstrate the use of the `echo` and `ls` commands, with the `pwd` command used as a command substitution and the `-l` option passed to `ls`.</p>
+            <p>These examples demonstrate the use of the `echo`, `ls`, and `grep` commands, with various arguments and options. Command substitution is also shown using `$(pwd)`.</p>
         </div>
 
         <div id="control-flow" class="section">
@@ -268,42 +401,54 @@ fi
 for i in {1..5}; do
     echo "$i"
 done
-</code></pre>
+
+while [ "$counter" -lt 5 ]; do
+    echo "Counter: $counter"
+    counter=$((counter + 1))
+done</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>These examples demonstrate the use of `if-then-else` statements and `for` loops in Bash scripts.</p>
+            <p>These examples demonstrate the use of `if-then-else` statements, `for` loops, and `while` loops in Bash scripts.</p>
         </div>
 
         <div id="functions" class="section">
             <h2>5. Bash Functions</h2>
             <p>Bash allows you to define and call functions, which are reusable blocks of code that perform specific tasks.</p>
             <div class="code-snippet">
-                <pre><code>add() {
+                <pre><code>greet() {
+    local name=$1
+    echo "Hello, $name!"
+}
+
+add() {
     local a=$1
     local b=$2
     echo $((a + b))
 }
 
+greet "Alice"
 result=$(add 5 3)
-echo "The result is: $result"
-</code></pre>
+echo "The result is: $result"</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>This example demonstrates the creation and usage of a simple function to perform addition in a Bash script.</p>
+            <p>This example demonstrates the creation and usage of functions in Bash, including passing arguments and returning values.</p>
         </div>
 
+        
         <div id="file-operations" class="section">
             <h2>6. Bash File Operations</h2>
             <p>Bash provides a set of commands and techniques for working with files and directories, such as creating, deleting, and modifying files and directories.</p>
             <div class="code-snippet">
-                <pre><code>mkdir my-directory
-touch my-file.txt
-echo "Hello, file!" > my-file.txt
-rm my-file.txt
-</code></pre>
+                <pre><code>mkdir my_directory
+touch my_file.txt
+echo "Hello, file!" > my_file.txt
+cat my_file.txt
+cp my_file.txt backup.txt
+mv my_file.txt new_name.txt
+rm new_name.txt</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>This example demonstrates the use of `mkdir`, `touch`, `echo`, and `rm` commands to perform various file operations in a Bash script.</p>
+            <p>These examples demonstrate various file operations in Bash, including creating directories, creating and modifying files, and moving or deleting files.</p>
         </div>
 
         <div id="input-and-output" class="section">
@@ -313,11 +458,14 @@ rm my-file.txt
                 <pre><code>read -p "Enter your name: " name
 echo "Hello, $name!"
 
-cat file1.txt file2.txt > combined.txt
-</code></pre>
+echo "This is stdout" > output.txt
+echo "This is stderr" >&2
+
+cat < input.txt
+ls -l | grep ".txt"</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>These examples demonstrate how to use the `read` command to get user input and the `echo` command to write output, as well as how to redirect input and output using the `>` operator.</p>
+            <p>These examples demonstrate how to use the `read` command to get user input, redirect output to files, read from files, and use pipes to connect commands.</p>
         </div>
 
         <div id="scripting" class="section">
@@ -326,13 +474,43 @@ cat file1.txt file2.txt > combined.txt
             <div class="code-snippet">
                 <pre><code>#!/bin/bash
 
-echo "This is a Bash script!"
-echo "The current user is: $(whoami)"
-echo "The current directory is: $(pwd)"
-</code></pre>
+# This script demonstrates various Bash features
+
+echo "Welcome to the Bash script demo!"
+
+# Variables
+name="Alice"
+age=30
+
+# Control flow
+if [ "$age" -ge 18 ]; then
+    echo "$name is an adult."
+else
+    echo "$name is a minor."
+fi
+
+# Loops
+for i in {1..5}; do
+    echo "Iteration $i"
+done
+
+# Functions
+greet() {
+    echo "Hello, $1!"
+}
+
+greet "Bob"
+
+# File operations
+echo "Creating a file..."
+echo "This is a test file." > test.txt
+cat test.txt
+rm test.txt
+
+echo "Script completed successfully!"</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>This example demonstrates the structure of a basic Bash script, including the shebang line and the use of command substitution.</p>
+            <p>This example demonstrates a more complex Bash script that combines various features we've learned, including variables, control flow, loops, functions, and file operations.</p>
         </div>
 
         <div id="advanced-topics" class="section">
@@ -340,37 +518,112 @@ echo "The current directory is: $(pwd)"
             <p>Bash has many advanced features and capabilities that you can explore further, including:</p>
             <ul>
                 <li>Associative arrays</li>
-                <li>Arithmetic operations</li>
                 <li>Regular expressions</li>
-                <li>Subshells and process substitution</li>
-                <li>Debugging and error handling</li>
-                <li>Bash scripting best practices</li>
+                <li>Process substitution</li>
+                <li>Subshells</li>
+                <li>Traps and signal handling</li>
+                <li>Debugging techniques</li>
             </ul>
             <div class="code-snippet">
-                <pre><code>declare -A person
+                <pre><code>#!/bin/bash
+
+# Associative array
+declare -A person
 person[name]="Alice"
-person[age]=25
+person[age]=30
 person[city]="New York"
 
 echo "Name: ${person[name]}"
-echo "Age: ${person[age]}"
-echo "City: ${person[city]}"
 
-let "result = 10 + 5"
-echo "The result is: $result"
-</code></pre>
+# Regular expression
+if [[ "example@email.com" =~ ^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}$ ]]; then
+    echo "Valid email address"
+fi
+
+# Process substitution
+diff <(ls dir1) <(ls dir2)
+
+# Subshell
+(cd /tmp && ls -l)
+
+# Trap
+trap 'echo "Ctrl+C pressed"; exit 1' INT
+
+# Debugging
+set -x  # Enable debugging
+echo "This line will be printed with debug info"
+set +x  # Disable debugging</code></pre>
                 <button class="copy-btn">Copy</button>
             </div>
-            <p>These examples demonstrate the use of associative arrays and arithmetic operations in Bash scripts.</p>
+            <p>These examples demonstrate some advanced Bash features. As you become more comfortable with Bash, exploring these topics will help you write more powerful and efficient scripts.</p>
             <div class="exercise">
-                <h3>Exercise:</h3>
-                <p>Create a Bash script that takes a directory path as an argument, lists all the files in that directory, and then prompts the user to choose a file to display its contents.</p>
+                <h3>Final Exercise:</h3>
+                <p>Create a Bash script that does the following:</p>
+                <ol>
+                    <li>Asks the user for their name and favorite number.</li>
+                    <li>Creates a directory with the user's name.</li>
+                    <li>Creates files named file1.txt to fileN.txt in this directory, where N is the user's favorite number.</li>
+                    <li>In each file, write "This is file X created by [user's name]" where X is the file number.</li>
+                    <li>Finally, list the contents of the directory and display a count of the files created.</li>
+                </ol>
+                <p>This exercise will test your understanding of user input, variables, loops, file operations, and command substitution in Bash.</p>
             </div>
         </div>
     </div>
 
+    <div class="side-menu">
+        <button class="close-menu">×</button>
+        <h2>All Courses</h2>
+        <ul>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python">
+                <a href="python.html">Python</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java">
+                <a href="java.html">Java</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++">
+                <a href="cpp.html">C++</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML">
+                <a href="html.html">HTML</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS">
+                <a href="css.html">CSS</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript">
+                <a href="javascript.html">JavaScript</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Reverse Engineering (Android)">
+                <a href="android-re.html">Reverse Engineering (Android)</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" alt="Bash">
+                <a href="bash.html">Bash</a>
+            </li>
+            <li>
+                <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Microsoft_Office_Logo_%282019-present%29.svg" alt="MS Office">
+                <a href="ms-office.html">MS Office</a>
+            </li>
+        </ul>
+    </div>
+
+    <button class="view-toggle">Switch View</button>
+
     <script>
         const copyButtons = document.querySelectorAll('.copy-btn');
+        const hamburger = document.querySelector('.hamburger');
+        const sideMenu = document.querySelector('.side-menu');
+        const closeMenu = document.querySelector('.close-menu');
+        const modeToggle = document.querySelector('.mode-toggle');
+        const viewToggle = document.querySelector('.view-toggle');
+        let isMobileView = false;
 
         copyButtons.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -382,6 +635,77 @@ echo "The result is: $result"
                 }, 2000);
             });
         });
+
+        hamburger.addEventListener('click', () => {
+            sideMenu.classList.toggle('show');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sideMenu.classList.remove('show');
+        });
+
+        modeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.toggle('dark-mode');
+        });
+
+        viewToggle.addEventListener('click', () => {
+            isMobileView = !isMobileView;
+            document.body.style.width = isMobileView ? '480px' : '100%';
+            document.body.style.margin = isMobileView ? '0 auto' : '0';
+            viewToggle.textContent = isMobileView ? 'Desktop View' : 'Mobile View';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!sideMenu.contains(e.target) && e.target !== hamburger) {
+                sideMenu.classList.remove('show');
+            }
+        });
+
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+        let xOffset = 0;
+        let yOffset = 0;
+
+        viewToggle.addEventListener('mousedown', dragStart);
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('mousemove', drag);
+
+        function dragStart(e) {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+
+            if (e.target === viewToggle) {
+                isDragging = true;
+            }
+        }
+
+        function dragEnd(e) {
+            initialX = currentX;
+            initialY = currentY;
+
+            isDragging = false;
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, viewToggle);
+            }
+        }
+
+        function setTranslate(xPos, yPos, el) {
+            el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+        }
     </script>
 </body>
 </html>
